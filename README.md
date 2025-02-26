@@ -34,6 +34,10 @@ The application is divided into two main components:
   - Dynamic rendering of interactive idea cards.
   - Swipe-based interactions for idea acceptance or rejection.
   - API integration for communicating with backend.
+![obraz](https://github.com/user-attachments/assets/1ab55001-ef48-4774-a946-d9cf46991b82)
+![obraz](https://github.com/user-attachments/assets/125c73d2-9351-4464-8847-b5c8739cacfa)
+![obraz](https://github.com/user-attachments/assets/bb433a98-15b5-4841-a9c4-84141b264c82)
+![obraz](https://github.com/user-attachments/assets/263a5692-fcd5-414f-88f0-517a83c2d931)
 
 ### Backend
 
