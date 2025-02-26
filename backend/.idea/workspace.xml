@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="56fda9f1-bfc3-408f-b329-ff55a5bdc957" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/backend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas_project/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas_project/asgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas_project/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas_project/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ideas_project/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/frontend.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/app-build-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/build-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/.tsbuildinfo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development-fallback/0.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development-fallback/index.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/0.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/1.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/10.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/11.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/2.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/3.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/4.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/5.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/6.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/7.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/8.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/9.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/index.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-development/index.pack.gz.old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-production/0.pack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-production/index.pack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/client-production/index.pack.old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/edge-server-production/0.pack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/edge-server-production/index.pack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/edge-server-production/index.pack.old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/0.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/1.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/10.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/11.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/2.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/3.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/4.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/5.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/6.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/7.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/8.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/9.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/index.pack.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-development/index.pack.gz.old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-production/0.pack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-production/index.pack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/cache/webpack/server-production/index.pack.old" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/react-loadable-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/server/app-paths-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/server/interception-route-rewrite-manifest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/server/middleware-build-manifest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/server/middleware-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/server/middleware-react-loadable-manifest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/server/next-font-manifest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/server/next-font-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/server/pages-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/server/server-reference-manifest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/server/server-reference-manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/static/chunks/polyfills.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/static/development/_buildManifest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/static/development/_ssgManifest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/trace" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.next/types/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/next-env.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/next.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/idea-card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ui/button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ui/card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/components/ui/input.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/styles/globals.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/tailwind.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "HayQacz"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/HayQacz/ideaForU.git",
+    "accountId": "68d5ffba-1fdf-4967-a7d8-1d8ad445f595"
+  }
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2tZr9Xg0ru2OgkDFYFgMbacMGxn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Django Server.backend.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/konta.HAYQ/Desktop/ideaForU/backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="backend" type="Python.DjangoServer" factoryName="Django server">
+      <module name="backend" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="ideas_project.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (ideaForU)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-PY-243.24978.54" />
+        <option value="bundled-python-sdk-91e3b7efe1d4-466328ff949b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.24978.54" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="56fda9f1-bfc3-408f-b329-ff55a5bdc957" name="Changes" comment="" />
+      <created>1740570286504</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740570286504</updated>
+      <workItem from="1740570287629" duration="206000" />
+      <workItem from="1740570513050" duration="636000" />
+      <workItem from="1740571185342" duration="1375000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

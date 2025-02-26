@@ -1,0 +1,169 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import Card from "../components/ui/card";
+import Input from "../components/ui/input";
+import Button from "../components/ui/button";
+import { Loader2, ChevronUp, ChevronDown } from "lucide-react";
+import Cookies from "js-cookie";
+import IdeaCard from "../components/idea-card";
+import { AnimatePresence, motion } from "framer-motion";
+
+export default function IdeasForU() {
+  const [subject, setSubject] = useState("");
+  const [keywords, setKeywords] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [ideas, setIdeas] = useState<any[]>([]);
+  const [currentIdeaIndex, setCurrentIdeaIndex] = useState(0);
+  const [lastSwipeResult, setLastSwipeResult] = useState<"accept" | "reject" | null>(null);
+  const [panelOpen, setPanelOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const [cardFixedHeight, setCardFixedHeight] = useState<number | null>(null);
+  const cardContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mediaQuery.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+
+  // Gdy panel jest otwarty, mierz wysokość kontenera IDEA CARD
+  useEffect(() => {
+    if (isMobile && panelOpen && cardContainerRef.current) {
+      setCardFixedHeight(cardContainerRef.current.offsetHeight);
+    }
+  }, [isMobile, panelOpen, ideas, currentIdeaIndex]);
+
+  const generateIdeas = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:8000/api/generate-ideas/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ topic: subject, keywords: keywords }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to generate ideas");
+      }
+
+      const data = await response.json();
+      if (Array.isArray(data) && data.length > 0) {
+        setIdeas((prev) => [...prev, ...data]);
+        // Auto-collapse panel on mobile after generating ideas
+        if (isMobile) {
+          setPanelOpen(false);
+        }
+      } else {
+        throw new Error("No ideas received from the backend");
+      }
+    } catch (error: unknown) {
+      console.error("Error fetching ideas:", error);
+      alert(`Error: ${error instanceof Error ? error.message : "Unknown error"}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSwipe = (direction: "left" | "right") => {
+    const result = direction === "right" ? "accept" : "reject";
+    setLastSwipeResult(result);
+    if (direction === "right") {
+      const savedIdeas = Cookies.get("savedIdeas");
+      const savedIdeasArray = savedIdeas ? JSON.parse(savedIdeas) : [];
+      savedIdeasArray.push(ideas[currentIdeaIndex]);
+      Cookies.set("savedIdeas", JSON.stringify(savedIdeasArray));
+    }
+    setCurrentIdeaIndex((prev) => prev + 1);
+    setTimeout(() => setLastSwipeResult(null), 1000);
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-blue-600 to-indigo-900 p-8 text-white">
+      <div className="w-full max-w-xl">
+        <h1 className="text-5xl font-extrabold tracking-tight mb-6 text-center">ideaForU</h1>
+        <p className="text-lg text-gray-300 mb-8 text-center">
+          Generate creative ideas based on your interests✨
+        </p>
+        {isMobile && (
+          <div className="flex justify-center mb-4">
+            <button onClick={() => setPanelOpen(!panelOpen)} className="focus:outline-none">
+              {panelOpen ? (
+                <ChevronUp className="w-6 h-6 text-white" />
+              ) : (
+                <ChevronDown className="w-6 h-6 text-white" />
+              )}
+            </button>
+          </div>
+        )}
+        <AnimatePresence>
+          {(!isMobile || panelOpen) && (
+            <motion.div
+              layout
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <Card className="p-8 space-y-6 bg-white text-black rounded-2xl shadow-2xl">
+                <Input
+                  placeholder="Enter subject..."
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                  className="text-lg border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 w-full"
+                />
+                <Input
+                  placeholder="Enter keywords..."
+                  value={keywords}
+                  onChange={(e) => setKeywords(e.target.value)}
+                  className="text-lg border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 w-full"
+                />
+                <Button
+                  onClick={generateIdeas}
+                  disabled={loading || !subject || !keywords}
+                  className="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all"
+                >
+                  {loading ? (
+                    <span className="flex items-center justify-center">
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Generating ideas...
+                    </span>
+                  ) : (
+                    "Generate Ideas💡"
+                  )}
+                </Button>
+              </Card>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Kontener IDEA CARD */}
+      <div
+        ref={cardContainerRef}
+        className={
+          isMobile
+            ? `flex-1 flex w-full min-h-0 ${panelOpen ? "mt-12" : "items-start"}`
+            : "flex-grow flex items-center justify-center w-full mt-12"
+        }
+        // Gdy panel jest zwinięty, stosujemy wcześniej zmierzoną stałą wysokość
+        style={isMobile && !panelOpen && cardFixedHeight ? { height: cardFixedHeight } : {}}
+      >
+        <AnimatePresence mode="wait">
+          {currentIdeaIndex < ideas.length ? (
+            <IdeaCard
+              idea={ideas[currentIdeaIndex]}
+              onSwipe={handleSwipe}
+              overlayResult={lastSwipeResult}
+              key={currentIdeaIndex}
+            />
+          ) : (
+            <IdeaCard placeholder overlayResult={lastSwipeResult} key="placeholder" />
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
