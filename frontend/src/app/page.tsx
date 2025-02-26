@@ -15,7 +15,7 @@ export default function IdeasForU() {
   const [loading, setLoading] = useState(false);
   const [ideas, setIdeas] = useState<any[]>([]);
   const [currentIdeaIndex, setCurrentIdeaIndex] = useState(0);
-  const [lastSwipeResult, setLastSwipeResult] = useState<"accept" | "reject" | null>(null);
+  const [lastSwipeResult, setLastSwipeResult] = useState<"accept" | "reject" | "super" | null>(null);
   const [panelOpen, setPanelOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [cardFixedHeight, setCardFixedHeight] = useState<number | null>(null);
@@ -29,7 +29,6 @@ export default function IdeasForU() {
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
-  // Gdy panel jest otwarty, mierz wysokość kontenera IDEA CARD
   useEffect(() => {
     if (isMobile && panelOpen && cardContainerRef.current) {
       setCardFixedHeight(cardContainerRef.current.offsetHeight);
@@ -52,7 +51,6 @@ export default function IdeasForU() {
       const data = await response.json();
       if (Array.isArray(data) && data.length > 0) {
         setIdeas((prev) => [...prev, ...data]);
-        // Auto-collapse panel on mobile after generating ideas
         if (isMobile) {
           setPanelOpen(false);
         }
@@ -67,10 +65,9 @@ export default function IdeasForU() {
     }
   };
 
-  const handleSwipe = (direction: "left" | "right") => {
-    const result = direction === "right" ? "accept" : "reject";
-    setLastSwipeResult(result);
-    if (direction === "right") {
+  const handleSwipe = (direction: "accept" | "reject" | "super") => {
+    setLastSwipeResult(direction);
+    if (direction === "accept") {
       const savedIdeas = Cookies.get("savedIdeas");
       const savedIdeasArray = savedIdeas ? JSON.parse(savedIdeas) : [];
       savedIdeasArray.push(ideas[currentIdeaIndex]);
@@ -81,89 +78,95 @@ export default function IdeasForU() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-blue-600 to-indigo-900 p-8 text-white">
-      <div className="w-full max-w-xl">
-        <h1 className="text-5xl font-extrabold tracking-tight mb-6 text-center">ideaForU</h1>
-        <p className="text-lg text-gray-300 mb-8 text-center">
-          Generate creative ideas based on your interests✨
-        </p>
-        {isMobile && (
-          <div className="flex justify-center mb-4">
-            <button onClick={() => setPanelOpen(!panelOpen)} className="focus:outline-none">
-              {panelOpen ? (
-                <ChevronUp className="w-6 h-6 text-white" />
-              ) : (
-                <ChevronDown className="w-6 h-6 text-white" />
-              )}
-            </button>
-          </div>
-        )}
-        <AnimatePresence>
-          {(!isMobile || panelOpen) && (
-            <motion.div
-              layout
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="overflow-hidden"
-            >
-              <Card className="p-8 space-y-6 bg-white text-black rounded-2xl shadow-2xl">
-                <Input
-                  placeholder="Enter subject..."
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                  className="text-lg border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 w-full"
-                />
-                <Input
-                  placeholder="Enter keywords..."
-                  value={keywords}
-                  onChange={(e) => setKeywords(e.target.value)}
-                  className="text-lg border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 w-full"
-                />
-                <Button
-                  onClick={generateIdeas}
-                  disabled={loading || !subject || !keywords}
-                  className="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all"
-                >
-                  {loading ? (
-                    <span className="flex items-center justify-center">
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Generating ideas...
-                    </span>
+      <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-blue-600 to-indigo-900 p-8 text-white">
+        <div className="w-full max-w-xl select-none">
+          <h1 className="text-5xl font-extrabold tracking-tight mb-6 text-center select-none">ideaForU</h1>
+          <p className="text-lg text-gray-300 mb-8 text-center select-none">
+            Generate creative ideas based on your interests✨
+          </p>
+          {isMobile && (
+              <div className="flex justify-center mb-4">
+                <button onClick={() => setPanelOpen(!panelOpen)} className="focus:outline-none">
+                  {panelOpen ? (
+                      <ChevronUp className="w-6 h-6 text-white" />
                   ) : (
-                    "Generate Ideas💡"
+                      <ChevronDown className="w-6 h-6 text-white" />
                   )}
-                </Button>
-              </Card>
-            </motion.div>
+                </button>
+              </div>
           )}
-        </AnimatePresence>
-      </div>
+          <AnimatePresence>
+            {(!isMobile || panelOpen) && (
+                <motion.div
+                    layout
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                >
+                  <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        generateIdeas();
+                      }}
+                  >
+                    <Card className="p-8 space-y-6 bg-white text-black rounded-2xl shadow-2xl">
+                      <Input
+                          placeholder="Enter subject..."
+                          value={subject}
+                          onChange={(e) => setSubject(e.target.value)}
+                          className="text-lg border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 w-full"
+                      />
+                      <Input
+                          placeholder="Enter keywords..."
+                          value={keywords}
+                          onChange={(e) => setKeywords(e.target.value)}
+                          className="text-lg border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-indigo-500 w-full"
+                      />
+                      <Button
+                          type="submit"
+                          disabled={loading || !subject || !keywords}
+                          className="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition-all"
+                      >
+                        {loading ? (
+                            <span className="flex items-center justify-center">
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Generating ideas...
+              </span>
+                        ) : (
+                            "Generate Ideas💡"
+                        )}
+                      </Button>
+                    </Card>
+                  </form>
+                </motion.div>
+            )}
+          </AnimatePresence>
 
-      {/* Kontener IDEA CARD */}
-      <div
-        ref={cardContainerRef}
-        className={
-          isMobile
-            ? `flex-1 flex w-full min-h-0 ${panelOpen ? "mt-12" : "items-start"}`
-            : "flex-grow flex items-center justify-center w-full mt-12"
-        }
-        // Gdy panel jest zwinięty, stosujemy wcześniej zmierzoną stałą wysokość
-        style={isMobile && !panelOpen && cardFixedHeight ? { height: cardFixedHeight } : {}}
-      >
-        <AnimatePresence mode="wait">
-          {currentIdeaIndex < ideas.length ? (
-            <IdeaCard
-              idea={ideas[currentIdeaIndex]}
-              onSwipe={handleSwipe}
-              overlayResult={lastSwipeResult}
-              key={currentIdeaIndex}
-            />
-          ) : (
-            <IdeaCard placeholder overlayResult={lastSwipeResult} key="placeholder" />
-          )}
-        </AnimatePresence>
+        </div>
+
+        <div
+            ref={cardContainerRef}
+            className={
+              isMobile
+                  ? `flex-1 flex w-full min-h-0 ${panelOpen ? "mt-12" : "items-start"}`
+                  : "flex-grow flex items-center justify-center w-full mt-12"
+            }
+            style={isMobile && !panelOpen && cardFixedHeight ? { height: cardFixedHeight } : {}}
+        >
+          <AnimatePresence mode="wait">
+            {currentIdeaIndex < ideas.length ? (
+                <IdeaCard
+                    idea={ideas[currentIdeaIndex]}
+                    onSwipe={handleSwipe}
+                    overlayResult={lastSwipeResult}
+                    key={currentIdeaIndex}
+                />
+            ) : (
+                <IdeaCard placeholder overlayResult={lastSwipeResult} key="placeholder" />
+            )}
+          </AnimatePresence>
+        </div>
       </div>
-    </div>
   );
 }
