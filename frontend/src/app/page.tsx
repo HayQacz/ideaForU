@@ -8,6 +8,7 @@ import { Loader2, ChevronUp, ChevronDown } from "lucide-react";
 import Cookies from "js-cookie";
 import IdeaCard from "../components/idea-card";
 import { AnimatePresence, motion } from "framer-motion";
+import SavedIdeasSidebar from "../components/SavedIdeasSidebar";
 
 export default function IdeasForU() {
   const [subject, setSubject] = useState("");
@@ -19,8 +20,11 @@ export default function IdeasForU() {
   const [panelOpen, setPanelOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const [cardFixedHeight, setCardFixedHeight] = useState<number | null>(null);
+  const [savedIdeas, setSavedIdeas] = useState<any[]>([]);
+  const [showSavedMenu, setShowSavedMenu] = useState(false);
   const cardContainerRef = useRef<HTMLDivElement>(null);
 
+  // Ustawienie responsywności (mobile/desktop)
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 767px)");
     setIsMobile(mediaQuery.matches);
@@ -29,11 +33,55 @@ export default function IdeasForU() {
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
+  // Ustawienie stałej wysokości kontenera na mobile
   useEffect(() => {
     if (isMobile && panelOpen && cardContainerRef.current) {
       setCardFixedHeight(cardContainerRef.current.offsetHeight);
     }
   }, [isMobile, panelOpen, ideas, currentIdeaIndex]);
+
+  // Funkcja do odczytu zapisanych pomysłów z localStorage (używamy localStorage dla mobilnych widoków)
+  const loadSavedIdeas = () => {
+    const data = localStorage.getItem("savedIdeas");
+    if (data) {
+      try {
+        setSavedIdeas(JSON.parse(data));
+      } catch (e) {
+        console.error("Error parsing savedIdeas from localStorage", e);
+        setSavedIdeas([]);
+      }
+    } else {
+      setSavedIdeas([]);
+    }
+  };
+
+  // Inicjujemy stan zapisanych pomysłów przy montowaniu
+  useEffect(() => {
+    loadSavedIdeas();
+  }, []);
+
+  // Nasłuchujemy zdarzeń focus oraz storage, aby odświeżać stan (dotyczy obu wersji, ale mobilna korzysta z localStorage)
+  useEffect(() => {
+    const handleUpdate = () => {
+      loadSavedIdeas();
+    };
+    window.addEventListener("focus", handleUpdate);
+    window.addEventListener("storage", handleUpdate);
+    return () => {
+      window.removeEventListener("focus", handleUpdate);
+      window.removeEventListener("storage", handleUpdate);
+    };
+  }, []);
+
+  // Dla wersji mobilnej – dodatkowo odświeżamy stan co 2 sekundy
+  useEffect(() => {
+    if (isMobile) {
+      const interval = setInterval(() => {
+        loadSavedIdeas();
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  }, [isMobile]);
 
   const generateIdeas = async () => {
     setLoading(true);
@@ -43,11 +91,9 @@ export default function IdeasForU() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ topic: subject, keywords: keywords }),
       });
-
       if (!response.ok) {
         throw new Error("Failed to generate ideas");
       }
-
       const data = await response.json();
       if (Array.isArray(data) && data.length > 0) {
         setIdeas((prev) => [...prev, ...data]);
@@ -67,18 +113,28 @@ export default function IdeasForU() {
 
   const handleSwipe = (direction: "accept" | "reject" | "super") => {
     setLastSwipeResult(direction);
-    if (direction === "accept") {
-      const savedIdeas = Cookies.get("savedIdeas");
-      const savedIdeasArray = savedIdeas ? JSON.parse(savedIdeas) : [];
-      savedIdeasArray.push(ideas[currentIdeaIndex]);
-      Cookies.set("savedIdeas", JSON.stringify(savedIdeasArray));
+    if (direction === "accept" || direction === "super") {
+      const ideaToSave = { ...ideas[currentIdeaIndex], superidea: direction === "super" };
+      // Aktualizujemy stan zapisanych pomysłów przy użyciu updatera
+      setSavedIdeas((prev) => {
+        const updated = [...prev, ideaToSave];
+        // Zapisujemy do ciasteczka oraz do localStorage – dla spójności
+        Cookies.set("savedIdeas", JSON.stringify(updated), { expires: 7, path: "/" });
+        localStorage.setItem("savedIdeas", JSON.stringify(updated));
+        return updated;
+      });
     }
     setCurrentIdeaIndex((prev) => prev + 1);
     setTimeout(() => setLastSwipeResult(null), 1000);
   };
 
+  // Obliczenia do mobilnego menu
+  const totalCount = savedIdeas.length;
+  const superCount = savedIdeas.filter((idea: any) => idea.superidea).length;
+  const normalCount = savedIdeas.filter((idea: any) => !idea.superidea).length;
+
   return (
-      <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-blue-600 to-indigo-900 p-8 text-white">
+      <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-blue-600 to-indigo-900 p-8 text-white relative">
         <div className="w-full max-w-xl select-none">
           <h1 className="text-5xl font-extrabold tracking-tight mb-6 text-center select-none">ideaForU</h1>
           <p className="text-lg text-gray-300 mb-8 text-center select-none">
@@ -106,9 +162,9 @@ export default function IdeasForU() {
                     className="overflow-hidden"
                 >
                   <form
-                      onSubmit={(e) => {
+                      onSubmit={async (e) => {
                         e.preventDefault();
-                        generateIdeas();
+                        await generateIdeas();
                       }}
                   >
                     <Card className="p-8 space-y-6 bg-white text-black rounded-2xl shadow-2xl">
@@ -131,8 +187,8 @@ export default function IdeasForU() {
                       >
                         {loading ? (
                             <span className="flex items-center justify-center">
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Generating ideas...
-              </span>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" /> Generating ideas...
+                      </span>
                         ) : (
                             "Generate Ideas💡"
                         )}
@@ -143,6 +199,24 @@ export default function IdeasForU() {
             )}
           </AnimatePresence>
 
+          {/* Mobilne menu zapisanych pomysłów */}
+          {isMobile && (
+              <div className="mt-4">
+                <button onClick={() => setShowSavedMenu(!showSavedMenu)} className="w-full text-left font-bold">
+                  Saved Ideas ({totalCount})
+                </button>
+                {showSavedMenu && (
+                    <div className="mt-2">
+                      <div className="text-yellow-600 font-semibold">
+                        Saved Super Ideas ({superCount})
+                      </div>
+                      <div className="text-green-600 font-semibold">
+                        Saved Ideas ({normalCount})
+                      </div>
+                    </div>
+                )}
+              </div>
+          )}
         </div>
 
         <div
@@ -167,6 +241,9 @@ export default function IdeasForU() {
             )}
           </AnimatePresence>
         </div>
+
+        {/* Pasek boczny widoczny tylko na desktop */}
+        {!isMobile && <SavedIdeasSidebar />}
       </div>
   );
 }

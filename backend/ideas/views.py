@@ -16,7 +16,6 @@ def generate_ideas(request):
     if not topic or not keywords:
         return Response({"error": "Topic i keywords są wymagane."}, status=status.HTTP_400_BAD_REQUEST)
 
-    # Prompt dla modelu deepseek-r1:8b
     prompt = f"""You are an AI assistant generating creative ideas based on a given topic and keywords.
 
 Topic: {topic}
@@ -25,7 +24,7 @@ Keywords: {keywords}
 Generate five ideas in JSON format. Each idea should have the following fields:
 - title: A short, catchy title.
 - subject: Same as the topic.
- description: A list of exactly six bullet points. Each bullet point should be a short line describing one aspect of the idea.
+ description: A list of exactly ten bullet points. Each bullet point should be a short line describing one aspect of the idea.
 - budget: A predicted budget(in $ and return value and $ for example 500$ or 150-200$) or the word None if not applicable.
 - time: Estimated time for realization(months, weeks, days, etc). 
 

@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96533d8b-4303-4f42-a675-d7592371881f" name="Changes" comment="">
+    <list default="true" id="96533d8b-4303-4f42-a675-d7592371881f" name="Changes" comment="feat: add 'Super Idea' button with animations, redesign idea card UI&#10;&#10;- Dodano przycisk &quot;Super Idea&quot; wraz z animacją.&#10;- Odświeżono wygląd komponentu IdeaCard dla lepszej czytelności.&#10;- Dodano wizualne wskazówki przy akcji „super idea”.">
+      <change afterPath="$PROJECT_DIR$/src/app/view-all/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/GalleryIdeaCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SavedIdeasSidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/ideas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/ideas/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/idea-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/idea-card.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +34,10 @@
     &quot;accountId&quot;: &quot;68d5ffba-1fdf-4967-a7d8-1d8ad445f595&quot;
   }
 }</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -40,24 +47,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "master",
-    "go.import.settings.migrated": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/konta.HAYQ/Desktop/ideaForU/frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Issue.Navigation",
-    "ts.external.directory.path": "C:\\Users\\konta.HAYQ\\Desktop\\ideaForU\\frontend\\node_modules\\typescript\\lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/konta.HAYQ/Desktop/ideaForU/frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Issue.Navigation&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\konta.HAYQ\\Desktop\\ideaForU\\frontend\\node_modules\\typescript\\lib&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\konta.HAYQ\Desktop\ideaForU\frontend\src\app" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -69,6 +81,10 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: add 'Super Idea' button with animations, redesign idea card UI&#10;&#10;- Dodano przycisk &quot;Super Idea&quot; wraz z animacją.&#10;- Odświeżono wygląd komponentu IdeaCard dla lepszej czytelności.&#10;- Dodano wizualne wskazówki przy akcji „super idea”." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add 'Super Idea' button with animations, redesign idea card UI&#10;&#10;- Dodano przycisk &quot;Super Idea&quot; wraz z animacją.&#10;- Odświeżono wygląd komponentu IdeaCard dla lepszej czytelności.&#10;- Dodano wizualne wskazówki przy akcji „super idea”." />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
