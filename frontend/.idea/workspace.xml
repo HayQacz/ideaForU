@@ -4,15 +4,19 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96533d8b-4303-4f42-a675-d7592371881f" name="Changes" comment="feat: add 'Super Idea' button with animations, redesign idea card UI&#10;&#10;- Dodano przycisk &quot;Super Idea&quot; wraz z animacją.&#10;- Odświeżono wygląd komponentu IdeaCard dla lepszej czytelności.&#10;- Dodano wizualne wskazówki przy akcji „super idea”.">
-      <change afterPath="$PROJECT_DIR$/src/app/view-all/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/GalleryIdeaCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SavedIdeasSidebar.tsx" afterDir="false" />
+    <list default="true" id="96533d8b-4303-4f42-a675-d7592371881f" name="Changes" comment="feat: added idea navibar and All ideas view&#10;&#10;- Dodano opcję zapisywania pomysłów do cookies&#10;- Dodano view-all-ideas gdzie użytkownik może usuwać pomysły zapisane w cookies oraz modyfikować ich stan (czy są super ideas czy zwykle)">
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/ideas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/ideas/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/docker-compose.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/next-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/view-all/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/view-all/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GalleryIdeaCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GalleryIdeaCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SavedIdeasSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SavedIdeasSidebar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +88,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: add 'Super Idea' button with animations, redesign idea card UI&#10;&#10;- Dodano przycisk &quot;Super Idea&quot; wraz z animacją.&#10;- Odświeżono wygląd komponentu IdeaCard dla lepszej czytelności.&#10;- Dodano wizualne wskazówki przy akcji „super idea”." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add 'Super Idea' button with animations, redesign idea card UI&#10;&#10;- Dodano przycisk &quot;Super Idea&quot; wraz z animacją.&#10;- Odświeżono wygląd komponentu IdeaCard dla lepszej czytelności.&#10;- Dodano wizualne wskazówki przy akcji „super idea”." />
+    <MESSAGE value="feat: added idea navibar and All ideas view&#10;&#10;- Dodano opcję zapisywania pomysłów do cookies&#10;- Dodano view-all-ideas gdzie użytkownik może usuwać pomysły zapisane w cookies oraz modyfikować ich stan (czy są super ideas czy zwykle)" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added idea navibar and All ideas view&#10;&#10;- Dodano opcję zapisywania pomysłów do cookies&#10;- Dodano view-all-ideas gdzie użytkownik może usuwać pomysły zapisane w cookies oraz modyfikować ich stan (czy są super ideas czy zwykle)" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

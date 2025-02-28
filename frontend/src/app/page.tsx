@@ -40,7 +40,7 @@ export default function IdeasForU() {
     }
   }, [isMobile, panelOpen, ideas, currentIdeaIndex]);
 
-  // Funkcja do odczytu zapisanych pomysłów z localStorage (używamy localStorage dla mobilnych widoków)
+  // Funkcja do odczytu zapisanych pomysłów z localStorage
   const loadSavedIdeas = () => {
     const data = localStorage.getItem("savedIdeas");
     if (data) {
@@ -60,16 +60,22 @@ export default function IdeasForU() {
     loadSavedIdeas();
   }, []);
 
-  // Nasłuchujemy zdarzeń focus oraz storage, aby odświeżać stan (dotyczy obu wersji, ale mobilna korzysta z localStorage)
+  // Nasłuchujemy zdarzeń focus oraz custom event "savedIdeasUpdated"
+  // Fragment z page.tsx odpowiedzialny za aktualizację savedIdeas:
   useEffect(() => {
-    const handleUpdate = () => {
-      loadSavedIdeas();
+    const handleUpdate = (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (customEvent.detail) {
+        setSavedIdeas(customEvent.detail);
+      } else {
+        loadSavedIdeas();
+      }
     };
     window.addEventListener("focus", handleUpdate);
-    window.addEventListener("storage", handleUpdate);
+    window.addEventListener("savedIdeasUpdated", handleUpdate);
     return () => {
       window.removeEventListener("focus", handleUpdate);
-      window.removeEventListener("storage", handleUpdate);
+      window.removeEventListener("savedIdeasUpdated", handleUpdate);
     };
   }, []);
 
@@ -121,6 +127,8 @@ export default function IdeasForU() {
         // Zapisujemy do ciasteczka oraz do localStorage – dla spójności
         Cookies.set("savedIdeas", JSON.stringify(updated), { expires: 7, path: "/" });
         localStorage.setItem("savedIdeas", JSON.stringify(updated));
+        // Wywołujemy custom event
+        window.dispatchEvent(new Event("savedIdeasUpdated"));
         return updated;
       });
     }

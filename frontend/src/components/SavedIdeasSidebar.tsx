@@ -25,11 +25,19 @@ const SavedIdeasSidebar: React.FC = () => {
 
     useEffect(() => {
         loadSavedIdeas();
-        window.addEventListener("storage", loadSavedIdeas);
-        window.addEventListener("focus", loadSavedIdeas);
+        const handleUpdate = (e: Event) => {
+            const customEvent = e as CustomEvent;
+            if (customEvent.detail) {
+                setSavedIdeas(customEvent.detail);
+            } else {
+                loadSavedIdeas();
+            }
+        };
+        window.addEventListener("savedIdeasUpdated", handleUpdate);
+        window.addEventListener("focus", handleUpdate);
         return () => {
-            window.removeEventListener("storage", loadSavedIdeas);
-            window.removeEventListener("focus", loadSavedIdeas);
+            window.removeEventListener("savedIdeasUpdated", handleUpdate);
+            window.removeEventListener("focus", handleUpdate);
         };
     }, []);
 

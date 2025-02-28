@@ -30,7 +30,6 @@ export default function ViewAllIdeas() {
         }
     };
 
-    // Przy montowaniu i przy zdarzeniach storage oraz focus odczytujemy najnowsze dane
     useEffect(() => {
         loadSavedIdeas();
         window.addEventListener("storage", loadSavedIdeas);
@@ -46,7 +45,6 @@ export default function ViewAllIdeas() {
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-blue-600 to-indigo-900 p-8 text-white">
-            {/* Nagłówek z linkiem powrotu */}
             <div className="w-full max-w-6xl flex items-center mb-8">
                 <Link href="/" className="text-white text-lg font-bold mr-4">
                     ← Back
@@ -64,7 +62,11 @@ export default function ViewAllIdeas() {
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {superIdeas.map((idea, index) => (
-                                <GalleryIdeaCard key={index} idea={idea} />
+                                <GalleryIdeaCard
+                                    key={index}
+                                    idea={idea}
+                                    onUpdateSavedIdeas={(updated) => setSavedIdeas(updated)}
+                                />
                             ))}
                         </div>
                     </div>
@@ -77,7 +79,11 @@ export default function ViewAllIdeas() {
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {normalIdeas.map((idea, index) => (
-                                <GalleryIdeaCard key={index} idea={idea} />
+                                <GalleryIdeaCard
+                                    key={index}
+                                    idea={idea}
+                                    onUpdateSavedIdeas={(updated) => setSavedIdeas(updated)}
+                                />
                             ))}
                         </div>
                     </div>

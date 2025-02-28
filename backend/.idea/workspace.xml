@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56fda9f1-bfc3-408f-b329-ff55a5bdc957" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/app/view-all/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/GalleryIdeaCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/SavedIdeasSidebar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ideas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ideas/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/next-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/next-env.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/view-all/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/view-all/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/GalleryIdeaCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/GalleryIdeaCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/SavedIdeasSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/SavedIdeasSidebar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,11 +118,23 @@
       <workItem from="1740570513050" duration="636000" />
       <workItem from="1740571185342" duration="2247000" />
       <workItem from="1740573650590" duration="3070000" />
-      <workItem from="1740644839014" duration="888000" />
+      <workItem from="1740644839014" duration="1581000" />
+      <workItem from="1740734196365" duration="4006000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
