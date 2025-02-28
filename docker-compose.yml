@@ -1,0 +1,31 @@
+﻿services:
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  ollama:
+    build:
+      context: ./ollama
+      dockerfile: Dockerfile
+    container_name: ollama
+    volumes:
+      - ollame_data:/data
+    ports:
+      - "11434:11434"
+    restart: unless-stopped
+
+
+volumes:
+  ollame_data:
