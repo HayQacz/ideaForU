@@ -91,12 +91,17 @@ export default function IdeasForU() {
 
   const generateIdeas = async () => {
     setLoading(true);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 600000); // 10 minut timeout
+
     try {
       const response = await fetch("http://localhost:8000/api/generate-ideas/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ topic: subject, keywords: keywords }),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
       if (!response.ok) {
         throw new Error("Failed to generate ideas");
       }
@@ -116,6 +121,8 @@ export default function IdeasForU() {
       setLoading(false);
     }
   };
+
+
 
   const handleSwipe = (direction: "accept" | "reject" | "super") => {
     setLastSwipeResult(direction);
